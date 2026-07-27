@@ -20,22 +20,22 @@ models:
         expr: total_orders
         agg: sum
         type: simple
-        hidden: true
+        
       - name: successful_revenue
         description: Successful revenue
         expr: successful_revenue_usd
         agg: sum
         type: simple
-        hidden: true
+       
       - name: refunded_amount
         description: Refunded amount
         expr: refunded_amount_usd
         agg: sum
         type: simple
-        hidden: true
+
       - name: failed_amount
         description: Failed payment amount
         expr: failed_amount_usd
         agg: sum
         type: simple
-        hidden: true
+
