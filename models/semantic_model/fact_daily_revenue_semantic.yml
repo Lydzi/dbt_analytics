@@ -1,40 +1,42 @@
-semantic_models:
-  - name: daily_revenue
-    model: ref('fct_daily_revenue')
+models:
+  - name: fct_daily_revenue
+    semantic_model:
+      enabled: true
+      name: fct_daily_revenue
     description: Daily revenue fact
-
-    defaults:
-      agg_time_dimension: order_date
-
-    entities:
-      - name: order_dt
-        type: primary
-        expr: order_date
-
-    dimensions:
-
+    agg_time_dimension: order_date
+    columns:
       - name: order_date
-        type: time
-        type_params:
-          time_granularity: day
-
-    measures:
-
+        entity:
+          type: primary
+          name: order_dt
+        dimension:
+          type: time
+        granularity: day
+    metrics:
       - name: total_orders
         description: Total number of orders
         agg: sum
 
+        type: simple
+        hidden: true
       - name: successful_revenue
         description: Successful revenue
         expr: successful_revenue_usd
         agg: sum
 
+        type: simple
+        hidden: true
       - name: refunded_amount
         description: Refunded amount
         expr: refunded_amount_usd
         agg: sum
 
+        type: simple
+        hidden: true
       - name: failed_amount
         description: Failed payment amount
         expr: failed_amount_usd
         agg: sum
+        type: simple
+        hidden: true

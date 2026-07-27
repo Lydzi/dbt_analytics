@@ -15,7 +15,8 @@ models:
       - name: plan_tier
         tests:
           - accepted_values:
-              values: ['basic', 'standard', 'premium']
+              arguments:
+                values: ['basic', 'standard', 'premium']
 
   - name: stg_ecommerce__orders
     description: "One row per order."
@@ -28,12 +29,14 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('stg_ecommerce__customers')
-              field: customer_id
+              arguments:
+                to: ref('stg_ecommerce__customers')
+                field: customer_id
       - name: order_status
         tests:
           - accepted_values:
-              values: ['completed', 'cancelled', 'refunded']
+              arguments:
+                values: ['completed', 'cancelled', 'refunded']
 
   - name: stg_ecommerce__payments
     description: "One row per payment attempt, amounts converted from cents to dollars."
@@ -46,9 +49,11 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('stg_ecommerce__orders')
-              field: order_id
+              arguments:
+                to: ref('stg_ecommerce__orders')
+                field: order_id
       - name: status
         tests:
           - accepted_values:
-              values: ['success', 'failure', 'refunded']
+              arguments:
+                values: ['success', 'failure', 'refunded']
