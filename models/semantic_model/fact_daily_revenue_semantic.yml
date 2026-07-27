@@ -5,6 +5,7 @@ models:
       name: fct_daily_revenue
     description: Daily revenue fact
     agg_time_dimension: order_date
+
     columns:
       - name: order_date
         entity:
@@ -16,22 +17,20 @@ models:
     metrics:
       - name: total_orders
         description: Total number of orders
+        expr: total_orders
         agg: sum
-
         type: simple
         hidden: true
       - name: successful_revenue
         description: Successful revenue
         expr: successful_revenue_usd
         agg: sum
-
         type: simple
         hidden: true
       - name: refunded_amount
         description: Refunded amount
         expr: refunded_amount_usd
         agg: sum
-
         type: simple
         hidden: true
       - name: failed_amount
