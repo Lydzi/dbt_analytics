@@ -35,12 +35,12 @@ models:
           type: time
         granularity: day
     metrics:
-      - name: total_lifetime_orders
+      - name: lifetime_orders
         description: Total lifetime orders across all customers
         type: simple
         label: Total Lifetime Orders
         agg: sum
-      - name: total_lifetime_successful_revenue_usd
+      - name: lifetime_successful_revenue_usd
         description: Total lifetime successful revenue across all customers
         type: simple
         label: Total Lifetime Successful Revenue
